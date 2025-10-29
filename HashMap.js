@@ -53,4 +53,19 @@ class HashMap {
           }
           return null;
     }
+    remove(key){
+        const index = this.hash(key);
+        this.check(index);
+        if (this.buckets[index] !== null) {
+            for (let i = 0; i < this.buckets[index].length; i++) {
+              const [storedKey, storedValue] = this.buckets[index][i];
+              if (storedKey === key) {
+                this.buckets[index].splice(i, 1); 
+                this.length--;
+                return true;
+              }
+              
+            }
+        }
+    }
 }
