@@ -22,4 +22,24 @@ class HashMap {
         throw "You're out of bounds";
         }
     }
+    set(key, value){
+        const index = this.hash(key);
+        this.check(index);
+        if (this.buckets[index] === null) {
+            this.buckets[index] = [];
+          }
+          let x = 0;
+          while( x < this.buckets[index].length) {
+            const [storedKey, storedValue] = this.buckets[index][x];
+            if (storedKey === key) {
+              this.buckets[index][x][1] = value; 
+              return;
+            }
+            else{
+                this.buckets[index].push([key, value]);
+                this.length++;
+            }
+            x++;
+          }
+    }
 }
