@@ -17,4 +17,9 @@ class HashMap {
             }
             return hashing;
     }
+    check(boundary){
+       if(boundary<0 || boundary >= this.capacity){
+        throw "You're out of bounds";
+        }
+    }
 }
