@@ -35,11 +35,22 @@ class HashMap {
               this.buckets[index][x][1] = value; 
               return;
             }
-            else{
-                this.buckets[index].push([key, value]);
-                this.length++;
-            }
             x++;
           }
+          this.buckets[index].push([key, value]);
+          this.length++;
+    }
+    get(key){
+        const index = this.hash(key);
+        this.check(index);
+        if (this.buckets[index] !== null) {
+            for (let i = 0; i < this.buckets[index].length; i++) {
+              const [storedKey, storedValue] = this.buckets[index][i];
+              if (storedKey === key) {
+                return storedValue;
+              }
+            }
+          }
+          return null;
     }
 }
