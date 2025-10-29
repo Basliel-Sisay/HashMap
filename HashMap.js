@@ -6,4 +6,15 @@ class HashMap {
         this.length =0;
 
     }
+    hash(key){
+            let hashing =0;
+            const prime = 31;
+            let x =0;
+            while(x<key.length){
+                hashing = hashing* prime + key.charCodeAt(x);
+                hashing = hashing % this.capacity; 
+                x=x+1;
+            }
+            return hashing;
+    }
 }
